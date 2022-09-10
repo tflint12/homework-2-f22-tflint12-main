@@ -20,7 +20,7 @@ def histogram(data, n, b, h):
         hist = [0]
         return hist
 
-    w = (h-b) / n
+    w = (h - b) / n
 
     hist = [0] * n
 
@@ -44,12 +44,60 @@ def histogram(data, n, b, h):
 
 
 def happybirthday(name_to_day, name_to_month, name_to_year):
-    #name_to_day, name_to_month and name_to_year are dictionaries
-    
+    # name_to_day, name_to_month and name_to_year are dictionaries
     # Write your code here
+    date_to_all = {}
+    the_age = []
+    the_day = []
+    the_month = []
+    the_year = []
+    the_name = []
+    tuple_list = []
+    for keys in name_to_year.keys():
+        the_age.append(2022 - name_to_year[keys])
+        the_day.append(name_to_day[keys])
+        the_month.append(name_to_month[keys])
+        the_year.append(name_to_year[keys])
+        the_name.append(keys)
+
+    i = 0
+    temp = 0
+    for i in range(len(the_day)):
+        for j in range(len(the_day)):
+            if the_day[i] == the_day[j]:
+                if the_age[i] < the_age[j]:
+                    temp = the_age[i]
+                    the_age[i] = the_age[j]
+                    the_age[j] = temp
+                    temp = 0
+                    temp = the_day[i]
+                    the_day[i] = the_day[j]
+                    the_day[j] = temp
+                    temp = 0
+                    temp = the_month[i]
+                    the_month[i] = the_month[j]
+                    the_month[j] = temp
+                    temp = 0
+                    temp = the_year[i]
+                    the_year[i] = the_year[j]
+                    the_year[j] = temp
+                    temp = 0
+                    temp = the_name[i]
+                    the_name[i] = the_name[j]
+                    the_name[j] = temp
+    i = 0
+    for i in range(len(the_year)):
+        tuple_list.append((the_name[i], (the_month[i], the_year[i], the_age[i])))
+
+    for i in range(len(the_day)):
+        date_to_all[the_day[i]] = tuple_list[i]
+
+    return date_to_all
+
+
+    # for key in  name_to_day.keys():
 
     # return the variable storing date_to_all
     # Output should be a dictionary
-    
-    pass
 
+    # pass
